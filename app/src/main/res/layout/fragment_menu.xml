@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background">
+
+    <RelativeLayout
+        android:id="@+id/fragmentGamesList_RL_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/smallFragmentFriendsList_btn_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:clickable="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="42dp"
+        android:layout_height="23dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentMenu_IV_mafiaGo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fragmentMenu_IV_mafiaGo" />
+
+    <Button
+        android:id="@+id/fragmentSettingsProfile_btn_changeAvatar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Играть"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentMenu_btn_dailyTasks"
+        app:layout_constraintStart_toStartOf="@+id/fragmentMenu_btn_dailyTasks"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentMenu_CV" />
+
+    <Button
+        android:id="@+id/fragmentSettingsProfile_btn_changePassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="НАСТРОЙКИ"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentMenu_btn_dailyTasks"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fragmentMenu_btn_dailyTasks"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentMenu_btn_dailyTasks" />
+
+    <Button
+        android:id="@+id/fragmentMenu_btn_rating"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="РЕЙТИНГИ"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentMenu_btn_dailyTasks"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fragmentMenu_btn_dailyTasks"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentSettingsProfile_btn_changePassword" />
+
+    <Button
+        android:id="@+id/fragmentMenu_btn_dailyTasks"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Играть онлайн"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentMenu_CV"
+        app:layout_constraintStart_toStartOf="@+id/fragmentMenu_CV"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentSettingsProfile_btn_changeAvatar" />
+
+    <ImageView
+        android:id="@+id/fragmentMenu_IV_mafiaGo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentGamesList_RL_back"
+        app:layout_constraintStart_toEndOf="@+id/fragmentGamesList_RL_back"
+        app:layout_constraintTop_toTopOf="@+id/fragmentGamesList_RL_back" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/fragmentMenu_CV"
+        android:layout_width="268dp"
+        android:layout_height="163dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@color/cardview_shadow_start_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentMenu_IV_mafiaGo">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/fragmentMenu_PB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fragmentMenu_TV_nick"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Римский гусь"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/fragmentMenu_IV_avatar"
+                app:layout_constraintTop_toTopOf="@+id/fragmentMenu_IV_avatar" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/fragmentMenu_IV_avatar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                app:civ_border_overlay="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fragmentMenu_TV_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="В сети"
+                android:textSize="14sp"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="@+id/fragmentMenu_TV_nick"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentMenu_TV_nick" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="16dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@+id/fragmentMenu_IV_avatar"
+                app:layout_constraintTop_toBottomOf="@+id/itemDailyTask_IV_prize" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="21dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/itemDailyTask_IV_prize"
+                app:layout_constraintStart_toStartOf="@+id/fragmentMenu_TV_nick" />
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+                app:layout_constraintStart_toStartOf="@+id/imageView8" />
+
+            <TextView
+                android:id="@+id/fragmentSettingsProfile_TV_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:text="TextView"
+                android:textSize="14sp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/itemDailyTask_IV_prize"
+                app:layout_constraintStart_toEndOf="@+id/itemDailyTask_IV_prize"
+                tools:text="100$" />
+
+            <TextView
+                android:id="@+id/fragmentSettingsProfile_TV_rang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:text="TextView"
+                android:textSize="14sp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+                app:layout_constraintStart_toEndOf="@+id/imageView8"
+                tools:text="10 ранг" />
+
+            <TextView
+                android:id="@+id/fragmentMenu_TV_gold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:text="TextView"
+                android:textSize="14sp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+                app:layout_constraintStart_toEndOf="@+id/imageView9"
+                tools:text="100 золота" />
+
+            <ImageView
+                android:id="@+id/itemDailyTask_IV_prize"
+                android:layout_width="15dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@+id/fragmentMenu_IV_avatar"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentMenu_IV_avatar" />
+
+            <TextView
+                android:id="@+id/dialogYouHaveBeenBanned_TV_exp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:text="TextView"
+                android:textSize="14sp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+                app:layout_constraintStart_toEndOf="@+id/imageView7"
+                tools:text="1000XP" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

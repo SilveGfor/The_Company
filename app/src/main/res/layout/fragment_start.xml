@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background">
+
+    <!--Что касается Id, то задаём их так: НазваниеФрагмента_аббревиатураЭлемента_комментарий
+    Пример: @+id/fragmentStart_ET_email   (ET - EditText, TV - TextView e.t.c)-->
+
+    <RelativeLayout
+        android:id="@+id/fragmentGamesList_RL_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/smallFragmentFriendsList_btn_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:clickable="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/fragmentStart_PB"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentStart_TV_text" />
+
+    <Button
+        android:id="@+id/fragmentStart_btn_enter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Войти"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentStart_ET_password"
+        app:layout_constraintStart_toStartOf="@+id/fragmentStart_ET_password"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentStart_ET_password" />
+
+    <EditText
+        android:id="@+id/fragmentStart_ET_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Пароль"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentRegister_ET_nick"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/fragmentRegister_ET_nick"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentRegister_ET_nick" />
+
+    <EditText
+        android:id="@+id/fragmentRegister_ET_nick"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="60dp"
+        android:ems="10"
+        android:hint="E-mail"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentStart_TV_text" />
+
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/fragmentStart_TV_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="ВХОД"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentGame_roomName" />
+
+    <ImageView
+        android:id="@+id/fragmentGame_roomName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentGamesList_RL_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fragmentGamesList_RL_back" />
+
+    <TextView
+        android:id="@+id/fragmentStart_TV_forgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Забыл пароль"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentStart_btn_register" />
+
+    <Button
+        android:id="@+id/fragmentStart_btn_register"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="15dp"
+        android:text="РЕГИСТРАЦИЯ"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentStart_btn_enter"
+        app:layout_constraintStart_toStartOf="@+id/fragmentStart_btn_enter"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentStart_btn_enter" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
