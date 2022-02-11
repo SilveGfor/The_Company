@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.thecompany.classes.OnBackPressedListener;
+import com.example.thecompany.fragments.SplashFragment;
 import com.example.thecompany.fragments.StartFragment;
 
 import java.net.URI;
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 readTimeout(30, TimeUnit.SECONDS).build();
 
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new StartFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new SplashFragment()).commit();
     }
 
     @Override

@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.thecompany.MainActivity;
 import com.example.thecompany.R;
+import com.example.thecompany.classes.OnBackPressedListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,7 +28,7 @@ import io.socket.emitter.Emitter;
 
 import static com.example.thecompany.MainActivity.socket;
 
-public class GameFragment extends Fragment {
+public class GameFragment extends Fragment implements OnBackPressedListener {
 
     TextView TV_money;
     TextView TV_question;
@@ -89,7 +90,8 @@ public class GameFragment extends Fragment {
             try {
                 json.put("nick", MainActivity.nick);
                 json.put("session_id", MainActivity.Session_id);
-                json.put("choice_index", 1);
+                json.put("num", num);
+                json.put("choice_index", 0);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -108,6 +110,7 @@ public class GameFragment extends Fragment {
                 return;
             getActivity().runOnUiThread(() -> {
                 JSONObject data = (JSONObject) args[0];
+                Log.d("kkk", "Socket_принять - create_game - " + args[0]);
                 try {
                     num = data.getInt("num");
 
@@ -119,7 +122,7 @@ public class GameFragment extends Fragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    socket.emit("connect_to_game ", json);
+                    socket.emit("connect_to_game", json);
                     Log.d("kkk", "Socket_отправка - connect_to_game "+ json.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -136,10 +139,11 @@ public class GameFragment extends Fragment {
                 return;
             getActivity().runOnUiThread(() -> {
                 JSONObject data = (JSONObject) args[0];
+                Log.d("kkk", "Socket_принять - get_my_game_info - " + args[0]);
                 try {
                     balance = data.getInt("balance");
 
-                    TV_money.setText(balance + "$");
+                    TV_money.setText(balance + " $");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -155,6 +159,7 @@ public class GameFragment extends Fragment {
                 return;
             getActivity().runOnUiThread(() -> {
                 JSONObject data = (JSONObject) args[0];
+                Log.d("kkk", "Socket_принять - new_event - " + args[0]);
                 JSONObject JO_event;
                 String task;
                 JSONArray JA_variants_list = new JSONArray();
@@ -203,12 +208,13 @@ public class GameFragment extends Fragment {
                 return;
             getActivity().runOnUiThread(() -> {
                 JSONObject data = (JSONObject) args[0];
+                Log.d("kkk", "Socket_принять - event_consequence - " + args[0]);
                 String consequence;
                 try {
                     consequence = data.getString("consequence");
                     balance = data.getInt("balance");
 
-                    TV_money.setText(balance + "$");
+                    TV_money.setText(balance + " $");
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     View viewDang = getLayoutInflater().inflate(R.layout.dialog_information, null);
@@ -235,14 +241,20 @@ public class GameFragment extends Fragment {
                 return;
             getActivity().runOnUiThread(() -> {
                 JSONObject data = (JSONObject) args[0];
+                Log.d("kkk", "Socket_принять - get_current_balance - " + args[0]);
                 try {
                     balance = data.getInt("balance");
 
-                    TV_money.setText(balance + "$");
+                    TV_money.setText(balance + " $");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             });
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new StartFragment()).commit();
+    }
 }

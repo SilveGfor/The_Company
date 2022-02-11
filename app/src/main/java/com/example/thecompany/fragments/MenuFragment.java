@@ -142,13 +142,13 @@ public class MenuFragment extends Fragment implements OnBackPressedListener {
         });
 
         btnSettings.setOnClickListener(v -> {
-            //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new SettingsFragment()).commit();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new SettingsFragment()).commit();
         });
 
         btnRating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new RatingsFragment()).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new RatingsFragment()).commit();
             }
         });
 
@@ -235,7 +235,7 @@ public class MenuFragment extends Fragment implements OnBackPressedListener {
                     IV_avatar.setImageBitmap(MainActivity.bitmap_avatar_1);
                 }
 
-                TV_nick.setText(MainActivity.NickName);
+                TV_nick.setText(nick);
             }
         });
     };

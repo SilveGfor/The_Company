@@ -99,8 +99,8 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                     loading.setVisibility(View.VISIBLE);
                     final JSONObject json = new JSONObject();
                     try {
-                        json.put("email", mSettings.getString(APP_PREFERENCES_NICK, ""));
-                        json.put("password", mSettings.getString(APP_PREFERENCES_PASSWORD, ""));
+                        json.put("nick", ETnick.getText());
+                        json.put("password", ETpassword1.getText());
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -158,6 +158,11 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                                         TV_title.setText("Вы успешно зарегистрировались в Mafia Go!");
                                         alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                         alert.show();
+
+                                        SharedPreferences.Editor editor = mSettings.edit();
+                                        editor.putString(APP_PREFERENCES_NICK, String.valueOf(ETnick.getText()));
+                                        editor.putString(APP_PREFERENCES_PASSWORD, String.valueOf(ETpassword1.getText()));
+                                        editor.apply();
                                     });
                                     break;
                                 default:

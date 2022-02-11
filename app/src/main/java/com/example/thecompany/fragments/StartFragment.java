@@ -1,7 +1,6 @@
 package com.example.thecompany.fragments;
 
 import android.app.AlertDialog;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -25,11 +24,13 @@ import android.widget.TextView;
 
 import com.example.thecompany.MainActivity;
 import com.example.thecompany.R;
+import com.example.thecompany.classes.MovieGifView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -72,6 +73,11 @@ public class StartFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_start, container, false);
+
+        //view = new MovieGifView(getActivity(), R.drawable.loadingproject1);
+        //setContentView(gifView);
+
+
         btnSignIn = view.findViewById(R.id.fragmentStart_btn_enter);
         btnReg = view.findViewById(R.id.fragmentStart_btn_register);
         ET_nick = view.findViewById(R.id.fragmentRegister_ET_nick);
@@ -169,7 +175,7 @@ public class StartFragment extends Fragment {
             SharedPreferences mSettings;
             mSettings = getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
-            json.put("email", MainActivity.nick);
+            json.put("nick", MainActivity.nick);
             json.put("password", MainActivity.password);
             json.put("current_game_version", MainActivity.CURRENT_GAME_VERSION);
 
@@ -196,7 +202,7 @@ public class StartFragment extends Fragment {
                     Log.d("kkk", "Принял: " + Answer);
                     try {
                         switch (Answer) {
-                            case "incorrect_email":
+                            case "incorrect_nick":
                                 ContextCompat.getMainExecutor(getContext()).execute(() -> {
                                     PB_loading.setVisibility(View.INVISIBLE);
                                     if (!AutoRun) {
@@ -206,7 +212,7 @@ public class StartFragment extends Fragment {
                                         TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
                                         TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
                                         TV_title.setText("Такого аккаунта не существует!");
-                                        TV_error.setText("Возможно, вы указали неверный домен почты (например: @mail.ru вместо @gmail.com) или ошиблись в написании почти");
+                                        TV_error.setText("Сначала зарегистрируйтесь");
                                         AlertDialog alert = builder.create();
                                         alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                         alert.show();
@@ -250,13 +256,8 @@ public class StartFragment extends Fragment {
                                 if (data.has("session_id"))
                                 {
                                     NickName = data.get("nick").toString();
-                                    Email = data.get("email").toString();
                                     Session_id = data.get("session_id").toString();
                                     MainActivity.User_id = data.get("user_id").toString();
-                                    MainActivity.Sid = data.get("sid").toString();
-                                    MainActivity.Role = data.get("role").toString();
-                                    MainActivity.Rang = data.getInt("rang");
-                                    MainActivity.MyInviteCode = data.getInt("my_invite_code");
                                     if (data.getString("avatar") == null || data.getString("avatar").equals("") || data.getString("avatar").equals("null")) {
                                         ContextCompat.getMainExecutor(getContext()).execute(() -> {
                                             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

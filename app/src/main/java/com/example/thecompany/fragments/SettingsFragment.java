@@ -28,6 +28,7 @@ import android.widget.TextView;
 
 import com.example.thecompany.MainActivity;
 import com.example.thecompany.R;
+import com.example.thecompany.classes.OnBackPressedListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,7 +41,7 @@ import io.socket.emitter.Emitter;
 import static android.app.Activity.RESULT_OK;
 import static com.example.thecompany.MainActivity.socket;
 
-public class SettingsFragment extends Fragment {
+public class SettingsFragment extends Fragment implements OnBackPressedListener {
 
     TextView TV_nick;
     ImageView IV_avatar;
@@ -521,4 +522,9 @@ public class SettingsFragment extends Fragment {
             alert2.show();
         });
     };
+
+    @Override
+    public void onBackPressed() {
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new StartFragment()).commit();
+    }
 }
