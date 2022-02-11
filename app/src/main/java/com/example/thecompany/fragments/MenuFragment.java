@@ -90,7 +90,7 @@ public class MenuFragment extends Fragment implements OnBackPressedListener {
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
         btnRating = view.findViewById(R.id.fragmentMenu_btn_rating);
-        btnGame = view.findViewById(R.id.fragmentSettingsProfile_btn_changeAvatar);
+        btnGame = view.findViewById(R.id.fragmentSettings_btn_changeAvatar);
         btnSettings = view.findViewById(R.id.fragmentSettingsProfile_btn_changePassword);
         TV_money = view.findViewById(R.id.fragmentSettingsProfile_TV_money);
         TV_exp = view.findViewById(R.id.dialogYouHaveBeenBanned_TV_exp);
@@ -229,8 +229,10 @@ public class MenuFragment extends Fragment implements OnBackPressedListener {
                     e.printStackTrace();
                 }
 
+
                 if (avatar != null && !avatar.equals("") && !avatar.equals("null")) {
-                    IV_avatar.setImageBitmap(fromBase64(avatar));
+                    MainActivity.bitmap_avatar_1 = fromBase64(avatar);
+                    IV_avatar.setImageBitmap(MainActivity.bitmap_avatar_1);
                 }
 
                 TV_nick.setText(MainActivity.NickName);

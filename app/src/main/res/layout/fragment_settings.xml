@@ -10,7 +10,11 @@
     <ScrollView
         android:id="@+id/fragmentSettingsMain_SV"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -31,233 +35,95 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/fragmentSettingsProfile_TV_nick"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/fragmentSettings_TV_nick"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:textSize="18sp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
                         android:textColor="@color/white"
-                        app:layout_constraintStart_toEndOf="@+id/fragmentSettingsProfile_IV_avatar"
-                        app:layout_constraintTop_toTopOf="@+id/fragmentSettingsProfile_IV_avatar" />
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/fragmentSettings_IV_avatar"
+                        app:layout_constraintTop_toTopOf="@+id/fragmentSettings_IV_avatar" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/fragmentSettingsProfile_IV_avatar"
+                        android:id="@+id/fragmentSettings_IV_avatar"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:src="@drawable/sheriff_round"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/imageView7"
-                        android:layout_width="16dp"
-                        android:layout_height="21dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
-                        android:background="@drawable/experience"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/fragmentSettingsProfile_IV_avatar"
-                        app:layout_constraintTop_toBottomOf="@+id/itemDailyTask_IV_prize" />
-
-                    <ImageView
-                        android:id="@+id/imageView8"
-                        android:layout_width="21dp"
-                        android:layout_height="14dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginLeft="24dp"
-                        android:background="@drawable/rang"
-                        app:layout_constraintBottom_toBottomOf="@+id/itemDailyTask_IV_prize"
-                        app:layout_constraintStart_toStartOf="@+id/fragmentSettingsProfile_TV_nick" />
-
-                    <ImageView
-                        android:id="@+id/imageView9"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:background="@drawable/gold"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-                        app:layout_constraintStart_toStartOf="@+id/imageView8" />
-
-                    <TextView
-                        android:id="@+id/fragmentSettingsProfile_TV_money"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/itemDailyTask_IV_prize"
-                        app:layout_constraintStart_toEndOf="@+id/itemDailyTask_IV_prize"
-                        app:layout_constraintTop_toTopOf="@+id/itemDailyTask_IV_prize" />
-
-                    <TextView
-                        android:id="@+id/fragmentSettingsProfile_TV_money2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Статус:"
-                        android:textSize="14sp"
-                        app:layout_constraintEnd_toEndOf="@+id/fragmentSettingsProfile_IV_avatar"
-                        app:layout_constraintStart_toStartOf="@+id/fragmentSettingsProfile_IV_avatar"
-                        app:layout_constraintTop_toBottomOf="@+id/fragmentSettingsProfile_IV_avatar" />
-
-                    <TextView
-                        android:id="@+id/fragmentSettingsProfile_TV_money3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="Цвет:"
-                        android:textSize="14sp"
-                        app:layout_constraintEnd_toEndOf="@+id/fragmentSettingsProfile_TV_money2"
-                        app:layout_constraintStart_toStartOf="@+id/fragmentSettingsProfile_TV_money2"
-                        app:layout_constraintTop_toBottomOf="@+id/fragmentSettingsProfile_TV_money2" />
-
-                    <TextView
-                        android:id="@+id/fragmentSettingsProfile_TV_rang"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView8"
-                        app:layout_constraintStart_toEndOf="@+id/imageView8"
-                        app:layout_constraintTop_toTopOf="@+id/imageView8" />
-
-                    <TextView
-                        android:id="@+id/fragmentSettingsProfile_TV_gold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
-                        app:layout_constraintStart_toEndOf="@+id/imageView9"
-                        app:layout_constraintTop_toTopOf="@+id/imageView9" />
-
-                    <ImageView
-                        android:id="@+id/itemDailyTask_IV_prize"
-                        android:layout_width="15dp"
-                        android:layout_height="18dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/money"
-                        app:layout_constraintStart_toStartOf="@+id/fragmentSettingsProfile_IV_avatar"
-                        app:layout_constraintTop_toBottomOf="@+id/fragmentSettingsProfile_Spinner_color" />
-
-                    <TextView
-                        android:id="@+id/dialogYouHaveBeenBanned_TV_exp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-                        app:layout_constraintStart_toEndOf="@+id/imageView7"
-                        app:layout_constraintTop_toTopOf="@+id/imageView7" />
-
-                    <Spinner
-                        android:id="@+id/fragmentSettingsProfile_Spinner_statuce"
-                        android:layout_width="0dp"
-                        android:layout_height="22dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/fragmentSettingsProfile_TV_money2"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/fragmentSettingsProfile_TV_money2"
-                        app:layout_constraintTop_toTopOf="@+id/fragmentSettingsProfile_TV_money2" />
-
-                    <Spinner
-                        android:id="@+id/fragmentSettingsProfile_Spinner_color"
-                        android:layout_width="0dp"
-                        android:layout_height="22dp"
-                        android:layout_marginEnd="16dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/fragmentSettingsProfile_TV_money3"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/fragmentSettingsProfile_Spinner_statuce"
-                        app:layout_constraintTop_toTopOf="@+id/fragmentSettingsProfile_TV_money3" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <Button
-                android:id="@+id/fragmentSettingsProfile_btn_changeAvatar"
+                android:id="@+id/fragmentSettings_btn_changeAvatar"
                 android:layout_width="268dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
                 android:text="сменить аватар"
-                app:layout_constraintBottom_toTopOf="@+id/fragmentSettingsProfile_btn_study"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragmentSettingsProfile_CV" />
 
             <Button
-                android:id="@+id/fragmentSettingsProfile_btn_study"
+                android:id="@+id/fragmentSettings_btn_changeNick"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:text="сменить ник"
-                app:layout_constraintBottom_toTopOf="@+id/fragmentSettingsProfile_btn_rules"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentSettingsProfile_btn_changeAvatar"
+                app:layout_constraintEnd_toEndOf="@+id/fragmentSettings_btn_changeAvatar"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/fragmentSettingsProfile_btn_changeAvatar" />
+                app:layout_constraintStart_toStartOf="@+id/fragmentSettings_btn_changeAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_changeAvatar" />
 
             <Button
-                android:id="@+id/fragmentSettingsProfile_btn_rules"
+                android:id="@+id/fragmentSettings_btn_changePassword"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:text="сменить пароль"
-                app:layout_constraintBottom_toTopOf="@+id/fragmentSettingsProfile_btn_fines"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentSettingsProfile_btn_changeAvatar"
+                app:layout_constraintEnd_toEndOf="@+id/fragmentSettings_btn_changeAvatar"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/fragmentSettingsProfile_btn_changeAvatar" />
+                app:layout_constraintStart_toStartOf="@+id/fragmentSettings_btn_changeAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_changeNick" />
 
             <Button
-                android:id="@+id/fragmentSettingsProfile_btn_fines"
+                android:id="@+id/fragmentSettings_btn_study"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:text="Обучение"
-                app:layout_constraintBottom_toTopOf="@+id/fragmentSettingsMain_btn_fullscreen"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentSettingsProfile_btn_changeAvatar"
+                app:layout_constraintEnd_toEndOf="@+id/fragmentSettings_btn_changeAvatar"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/fragmentSettingsProfile_btn_changeAvatar" />
+                app:layout_constraintStart_toStartOf="@+id/fragmentSettings_btn_changeAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_changePassword" />
 
             <Button
-                android:id="@+id/fragmentSettingsMain_btn_fullscreen"
+                android:id="@+id/fragmentSettings_btn_fullscreen"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:text="Полный экран"
-                app:layout_constraintBottom_toTopOf="@+id/fragmentSettingsProfile_btn_changeNick"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentSettingsProfile_btn_changeAvatar"
+                app:layout_constraintEnd_toEndOf="@+id/fragmentSettings_btn_changeAvatar"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/fragmentSettingsProfile_btn_changeAvatar" />
+                app:layout_constraintStart_toStartOf="@+id/fragmentSettings_btn_changeAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_study" />
 
             <Button
-                android:id="@+id/fragmentSettingsProfile_btn_changeNick"
+                android:id="@+id/fragmentSettings_btn_exit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
+                android:layout_marginTop="8dp"
                 android:text="выйти из аккаунта"
-                app:layout_constraintBottom_toTopOf="@+id/fragmentSettingsMain_TV_usersAgreement"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentSettingsProfile_btn_changeAvatar"
+                app:layout_constraintEnd_toEndOf="@+id/fragmentSettings_btn_changeAvatar"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/fragmentSettingsProfile_btn_changeAvatar" />
-
-            <TextView
-                android:id="@+id/fragmentSettingsMain_TV_privacyPolicy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Политика конфиденциальности"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/fragmentSettingsMain_TV_usersAgreement" />
-
-            <TextView
-                android:id="@+id/fragmentSettingsMain_TV_usersAgreement"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="Пользовательское соглашение"
-                app:layout_constraintBottom_toTopOf="@+id/fragmentSettingsMain_TV_privacyPolicy"
-                app:layout_constraintStart_toStartOf="@+id/fragmentSettingsProfile_btn_changeNick" />
+                app:layout_constraintStart_toStartOf="@+id/fragmentSettings_btn_changeAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_fullscreen" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
