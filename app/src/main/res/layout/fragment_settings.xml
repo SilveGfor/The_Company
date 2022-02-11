@@ -7,126 +7,69 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/cardview_dark_background">
 
-    <ScrollView
-        android:id="@+id/fragmentSettingsMain_SV"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/fragmentSettings_btn_changeAvatar"
+        android:layout_width="268dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="сменить аватар"
+        android:textColor="@color/white"
+        android:textSize="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/fragmentSettings_btn_changeNick"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="212dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="сменить ник"
+        android:textColor="@color/white"
+        android:textSize="28dp"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentSettings_btn_changeAvatar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fragmentSettings_btn_changeAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_changeAvatar" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fragmentSettingsProfile_CV"
-                android:layout_width="269dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/purple_700"
-                app:cardCornerRadius="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+    <Button
+        android:id="@+id/fragmentSettings_btn_changePassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="сменить пароль"
+        android:textColor="@color/white"
+        android:textSize="28dp"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentSettings_btn_changeAvatar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fragmentSettings_btn_changeAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_changeNick" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/fragmentSettings_btn_close"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="выйти из аккаунта"
+        android:textColor="@color/white"
+        android:textSize="28dp"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentSettings_btn_changeAvatar"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/fragmentSettings_btn_changeAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_changeNick" />
 
-                    <TextView
-                        android:id="@+id/fragmentSettings_TV_nick"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/fragmentSettings_IV_avatar"
-                        app:layout_constraintTop_toTopOf="@+id/fragmentSettings_IV_avatar" />
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/fragmentSettings_IV_avatar"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <Button
-                android:id="@+id/fragmentSettings_btn_changeAvatar"
-                android:layout_width="268dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="сменить аватар"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentSettingsProfile_CV" />
-
-            <Button
-                android:id="@+id/fragmentSettings_btn_changeNick"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="сменить ник"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentSettings_btn_changeAvatar"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/fragmentSettings_btn_changeAvatar"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_changeAvatar" />
-
-            <Button
-                android:id="@+id/fragmentSettings_btn_changePassword"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="сменить пароль"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentSettings_btn_changeAvatar"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/fragmentSettings_btn_changeAvatar"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_changeNick" />
-
-            <Button
-                android:id="@+id/fragmentSettings_btn_study"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Обучение"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentSettings_btn_changeAvatar"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/fragmentSettings_btn_changeAvatar"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_changePassword" />
-
-            <Button
-                android:id="@+id/fragmentSettings_btn_fullscreen"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Полный экран"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentSettings_btn_changeAvatar"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/fragmentSettings_btn_changeAvatar"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_study" />
-
-            <Button
-                android:id="@+id/fragmentSettings_btn_exit"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="выйти из аккаунта"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentSettings_btn_changeAvatar"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/fragmentSettings_btn_changeAvatar"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_fullscreen" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:src="@drawable/back"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="30dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
