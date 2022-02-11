@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background">
+
+    <Button
+        android:id="@+id/fragmentSettings_btn_changeAvatar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="Играть"
+        android:textColor="@color/white"
+        android:textSize="28dp"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentMenu_btn_dailyTasks"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/fragmentMenu_btn_dailyTasks"
+        tools:layout_editor_absoluteY="176dp" />
+
+    <Button
+        android:id="@+id/fragmentSettingsProfile_btn_changePassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Рейтинг"
+        android:background="@drawable/button"
+        android:textSize="28dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentMenu_btn_dailyTasks"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fragmentMenu_btn_dailyTasks"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentMenu_btn_dailyTasks" />
+
+    <Button
+        android:id="@+id/fragmentMenu_btn_rating"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Правила"
+        android:background="@drawable/button"
+        android:textSize="28dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentMenu_btn_dailyTasks"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fragmentMenu_btn_dailyTasks"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentSettingsProfile_btn_changePassword" />
+
+    <Button
+        android:id="@+id/fragmentMenu_btn_dailyTasks"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button"
+        android:text="Играть онлайн"
+        android:textSize="28dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_changeAvatar" />
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/settings"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="41dp" />
+
+    <TextView
+        android:id="@+id/fragmentMenu_TV_nick"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Римский гусь"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="260dp"
+        tools:layout_editor_absoluteY="17dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
