@@ -56,18 +56,10 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
     ShimmerTextView STV_text;
 
     EditText ETnick;
-    EditText ETemail;
     EditText ETpassword1;
     EditText ETpassword2;
-    EditText ETcode;
-    EditText ET_inviteCode;
-    TextView text_reg;
 
     ProgressBar loading;
-
-    TextView TV_sendCodeOneMoreTime;
-    TextView TV_repeatRegistration;
-    TextView TV_question;
 
     public static final String APP_PREFERENCES = "user";
     public static final String APP_PREFERENCES_NICK = "nick";
@@ -78,7 +70,7 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_register, container, false);
+        View view;
 
         view = inflater.inflate(R.layout.fragment_register, container, false);
         btnReg = view.findViewById(R.id.fragmentRegister_btn_reg);
@@ -87,24 +79,11 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
         ETpassword1 = view.findViewById(R.id.fragmentRegister_ET_password1);
         ETpassword2 = view.findViewById(R.id.fragmentRegister_ET_password2);
         loading = view.findViewById(R.id.fragmentChangePassword_PB);
-        RL_back = view.findViewById(R.id.fragmentGamesList_RL_back);
         STV_text = view.findViewById(R.id.fragmentRegister_TV_text);
-
-        text_reg.setVisibility(View.GONE);
-        ETcode.setVisibility(View.GONE);
-        TV_repeatRegistration.setVisibility(View.GONE);
-        TV_sendCodeOneMoreTime.setVisibility(View.GONE);
 
         loading.setVisibility(View.GONE);
 
         mSettings = getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-
-        RL_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new StartFragment()).commit();
-            }
-        });
 
         btnReg.setOnClickListener(v -> {
             if (isNetworkOnline(getContext())) {

@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     public static Bitmap bitmap_avatar_2;
     public static String CURRENT_GAME_VERSION = "0.0.1";
 
-    public static String url = "https://mafiagoserver.online:5000";
+    public static String url = "https://mafiagoserver.online:5050";
 
     public static String password = "";
     public static String nick = "";
