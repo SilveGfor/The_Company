@@ -15,6 +15,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
+        android:background="@drawable/bodyguard_round"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/itemRatingUser_TV_place"
         app:layout_constraintTop_toTopOf="parent" />

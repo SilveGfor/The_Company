@@ -8,7 +8,7 @@ import com.example.thecompany.fragments.SmallRatingsFragment;
 
 public class RatingsPagerAdapter extends FragmentStatePagerAdapter {
     final int PAGE_COUNT = 2;
-    private String tabTitles[] = new String[] { "Быстрые победы", "Долгие победы"};
+    private String tabTitles[] = new String[] { "Поражения", "Победы"};
 
     public RatingsPagerAdapter(FragmentManager fm) {
         super(fm);

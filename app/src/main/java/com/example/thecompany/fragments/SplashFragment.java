@@ -1,6 +1,7 @@
 package com.example.thecompany.fragments;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,6 +21,7 @@ import com.example.thecompany.R;
 public class SplashFragment extends Fragment {
     ImageView IV_fon, gif, gif2;
     TextView TV_name;
+    private MediaPlayer mediaPlayer;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,6 +35,8 @@ public class SplashFragment extends Fragment {
         gif = view.findViewById(R.id.fragmentSplash_IV_gif);
         gif2 = view.findViewById(R.id.fragmentSplash_IV_gif2);
 
+        mediaPlayer = MediaPlayer.create(getActivity(), R.raw.screensaver);
+
         TV_name.animate().translationY(-2500).setDuration(1000).setStartDelay(5500);
         IV_fon.animate().translationY(2000).setDuration(1000).setStartDelay(5500);
         gif.animate().translationY(-2500).setDuration(1000).setStartDelay(6500);
@@ -44,6 +48,8 @@ public class SplashFragment extends Fragment {
         Glide.with(this)
                 .load(R.drawable.loadingproject1)
                 .into(gif2);
+
+        mediaPlayer.start();
 
         new Handler().postDelayed(new Runnable() {
             @Override

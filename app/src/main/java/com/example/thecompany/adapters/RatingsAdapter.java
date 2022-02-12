@@ -45,7 +45,9 @@ public class RatingsAdapter extends BaseAdapter {
         TextView TV_place = view.findViewById(R.id.itemRatingUser_TV_place);
         ImageView IV_avatar = view.findViewById(R.id.itemRatingUser_IV_avatar);
 
-        TV_score.setText(list_ratings.get(position).score);
+        TV_nick.setText(list_ratings.get(position).nick);
+
+        TV_score.setText(list_ratings.get(position).score + " сек");
         TV_place.setText(String.valueOf(list_ratings.get(position).place));
 
         if (list_ratings.get(position).avatar != null) {

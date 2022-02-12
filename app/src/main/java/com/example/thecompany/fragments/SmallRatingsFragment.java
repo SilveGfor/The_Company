@@ -55,8 +55,6 @@ public class SmallRatingsFragment extends Fragment {
     ListView LV_rating;
     TextView TV;
     ProgressBar PB_loading;
-    TextView TV_questionRatings;
-    TextView TV_noRatings;
 
     public static SmallRatingsFragment newInstance(int page) {
         Bundle args = new Bundle();
@@ -86,7 +84,6 @@ public class SmallRatingsFragment extends Fragment {
                 LV_rating = view.findViewById(R.id.smallFragmentRatings_LV);
                 PB_loading = view.findViewById(R.id.smallFragmentRatings_PB);
                 TV = view.findViewById(R.id.fragmentSmallRatings_TV);
-                TV_noRatings = view.findViewById(R.id.smallFragmentRatings_TV_noRatings);
                 /*
                 TV_questionRatings = view.findViewById(R.id.smallFragmentRatings_TV_questionRatings);
 
@@ -125,7 +122,6 @@ public class SmallRatingsFragment extends Fragment {
                 LV_rating = view.findViewById(R.id.smallFragmentRatings_LV);
                 PB_loading = view.findViewById(R.id.smallFragmentRatings_PB);
                 TV = view.findViewById(R.id.fragmentSmallRatings_TV);
-                TV_noRatings = view.findViewById(R.id.smallFragmentRatings_TV_noRatings);
                 /*
                 TV_questionRatings = view.findViewById(R.id.smallFragmentRatings_TV_questionRatings);
 
@@ -195,10 +191,6 @@ public class SmallRatingsFragment extends Fragment {
                             }
                             PB_loading.setVisibility(View.INVISIBLE);
                             ratingsAdapter.notifyDataSetChanged();
-                            if (list_ratings.size() == 0)
-                            {
-                                TV_noRatings.setVisibility(View.VISIBLE);
-                            }
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

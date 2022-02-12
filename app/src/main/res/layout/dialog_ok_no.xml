@@ -10,7 +10,7 @@
         android:id="@+id/fragmentSettingsProfile_CV2"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/d_shape"
+        app:cardBackgroundColor="@color/question"
         app:cardCornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

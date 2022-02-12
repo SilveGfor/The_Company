@@ -30,6 +30,7 @@ import com.example.thecompany.classes.OnBackPressedListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.socket.emitter.Emitter;
 
 import static com.example.thecompany.MainActivity.socket;
@@ -37,7 +38,10 @@ import static com.example.thecompany.MainActivity.socket;
 public class MenuFragment extends Fragment implements OnBackPressedListener {
     Button btnRating;
     Button btnGame;
+    Button btnStudy;
     ImageButton btnSettings;
+
+    CircleImageView CIV_avatar;
 
     TextView TV_nick;
 
@@ -58,6 +62,8 @@ public class MenuFragment extends Fragment implements OnBackPressedListener {
         btnGame = view.findViewById(R.id.fragmentMenu_btn_game);
         btnSettings = view.findViewById(R.id.fragmentMenu_btn_settings);
         TV_nick = view.findViewById(R.id.fragmentMenu_TV_nick);
+        CIV_avatar = view.findViewById(R.id.fragmentMenu_CIV_avatar);
+        btnStudy = view.findViewById(R.id.fragmentMenu_btn_rules);
 
         //IV_avatar = view.findViewById(R.id.fragmentMenu_IV_avatar);
 
@@ -93,6 +99,10 @@ public class MenuFragment extends Fragment implements OnBackPressedListener {
 
         btnSettings.setOnClickListener(v -> {
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new SettingsFragment()).commit();
+        });
+
+        btnStudy.setOnClickListener(v -> {
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new StudyFragment()).commit();
         });
 
         btnRating.setOnClickListener(new View.OnClickListener() {
@@ -175,7 +185,7 @@ public class MenuFragment extends Fragment implements OnBackPressedListener {
 
                 if (avatar != null && !avatar.equals("") && !avatar.equals("null")) {
                     MainActivity.bitmap_avatar_1 = fromBase64(avatar);
-                    //IV_avatar.setImageBitmap(MainActivity.bitmap_avatar_1);
+                    CIV_avatar.setImageBitmap(MainActivity.bitmap_avatar_1);
                 }
 
                 TV_nick.setText(nick);

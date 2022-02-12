@@ -136,7 +136,7 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                                         TextView TV_title = viewError.findViewById(R.id.dialogGame_TV_title);
 
                                         TV.setText("Регистрация успешна!");
-                                        TV_title.setText("Вы успешно зарегистрировались в Mafia Go!");
+                                        TV_title.setText("Вы успешно зарегистрировались в TheCompany!");
                                         alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                         alert.show();
 
@@ -144,6 +144,8 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                                         editor.putString(APP_PREFERENCES_NICK, String.valueOf(ETnick.getText()));
                                         editor.putString(APP_PREFERENCES_PASSWORD, String.valueOf(ETpassword1.getText()));
                                         editor.apply();
+
+                                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new StartFragment()).commit();
                                     });
                                     break;
                                 default:
