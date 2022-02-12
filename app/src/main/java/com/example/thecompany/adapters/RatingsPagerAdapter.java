@@ -7,8 +7,8 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.example.thecompany.fragments.SmallRatingsFragment;
 
 public class RatingsPagerAdapter extends FragmentStatePagerAdapter {
-    final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] { "Игры", "Победы", "Опыт"};
+    final int PAGE_COUNT = 2;
+    private String tabTitles[] = new String[] { "Быстрые победы", "Долгие победы"};
 
     public RatingsPagerAdapter(FragmentManager fm) {
         super(fm);

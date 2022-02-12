@@ -53,6 +53,7 @@ public class SmallRatingsFragment extends Fragment {
     JSONObject json;
 
     ListView LV_rating;
+    TextView TV;
     ProgressBar PB_loading;
     TextView TV_questionRatings;
     TextView TV_noRatings;
@@ -84,6 +85,7 @@ public class SmallRatingsFragment extends Fragment {
                 view = inflater.inflate(R.layout.fragment_small_ratings, container, false);
                 LV_rating = view.findViewById(R.id.smallFragmentRatings_LV);
                 PB_loading = view.findViewById(R.id.smallFragmentRatings_PB);
+                TV = view.findViewById(R.id.fragmentSmallRatings_TV);
                 TV_noRatings = view.findViewById(R.id.smallFragmentRatings_TV_noRatings);
                 /*
                 TV_questionRatings = view.findViewById(R.id.smallFragmentRatings_TV_questionRatings);
@@ -111,14 +113,18 @@ public class SmallRatingsFragment extends Fragment {
                 PB_loading.setVisibility(View.VISIBLE);
 
                 socket.on("get_rating", onGetRating);
-                main_name = "game_counter";
+                main_name = "min_game_time";
 
+                TV.setText("Быстрые победы");
+
+                CallSocket(main_name);
 
                 break;
             case 2:
                 view = inflater.inflate(R.layout.fragment_small_ratings, container, false);
                 LV_rating = view.findViewById(R.id.smallFragmentRatings_LV);
                 PB_loading = view.findViewById(R.id.smallFragmentRatings_PB);
+                TV = view.findViewById(R.id.fragmentSmallRatings_TV);
                 TV_noRatings = view.findViewById(R.id.smallFragmentRatings_TV_noRatings);
                 /*
                 TV_questionRatings = view.findViewById(R.id.smallFragmentRatings_TV_questionRatings);
@@ -146,7 +152,11 @@ public class SmallRatingsFragment extends Fragment {
                 LV_rating.setAdapter(ratingsAdapter);
 
                 socket.on("get_rating", onGetRating);
-                main_name = "wins";
+                main_name = "max_game_time";
+
+                TV.setText("Долгие победы");
+
+                CallSocket(main_name);
                 break;
         }
 

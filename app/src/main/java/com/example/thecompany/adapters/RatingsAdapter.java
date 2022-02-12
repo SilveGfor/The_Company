@@ -44,7 +44,6 @@ public class RatingsAdapter extends BaseAdapter {
         TextView TV_score = view.findViewById(R.id.itemRatingUser_TV_score);
         TextView TV_place = view.findViewById(R.id.itemRatingUser_TV_place);
         ImageView IV_avatar = view.findViewById(R.id.itemRatingUser_IV_avatar);
-        ImageView IV_online = view.findViewById(R.id.itemRatingUser_IV_online);
 
         TV_score.setText(list_ratings.get(position).score);
         TV_place.setText(String.valueOf(list_ratings.get(position).place));

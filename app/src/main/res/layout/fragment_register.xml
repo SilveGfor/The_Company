@@ -8,23 +8,13 @@
     android:background="@drawable/background"
     android:orientation="vertical">
 
-
-    <ImageView
-        android:id="@+id/fragmentGame_roomName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="13dp" />
-
-    <Button
+    <EditText
         android:id="@+id/fragmentRegister_ET_nick"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="60dp"
-
         android:background="@color/button"
         android:drawableLeft="@drawable/faces_white"
         android:drawablePadding="15dp"
@@ -43,11 +33,10 @@
         android:id="@+id/fragmentRegister_ET_password1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:background="@color/button"
         android:drawableLeft="@drawable/key_white"
         android:drawablePadding="15dp"
-        android:drawableleft="@drawable/key_white"
         android:ems="10"
         android:hint="введите пароль"
         android:inputType="textPersonName"
@@ -63,7 +52,7 @@
         android:id="@+id/fragmentRegister_ET_password2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:background="@color/button"
         android:drawableLeft="@drawable/key_white"
         android:drawablePadding="15dp"

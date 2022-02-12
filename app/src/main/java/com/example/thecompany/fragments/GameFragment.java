@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.thecompany.MainActivity;
@@ -32,10 +33,10 @@ public class GameFragment extends Fragment implements OnBackPressedListener {
 
     TextView TV_money;
     TextView TV_question;
-    Button btn_1;
-    Button btn_2;
-    Button btn_3;
-    Button btn_4;
+    TextView btn_1;
+    TextView btn_2;
+    TextView btn_3;
+    TextView btn_4;
 
     JSONObject json;
 
@@ -73,17 +74,36 @@ public class GameFragment extends Fragment implements OnBackPressedListener {
         socket.on("event_consequence", onEventConsequence);
         socket.on("get_current_balance", onGetCurrentBalance);
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        View viewDang = getLayoutInflater().inflate(R.layout.dialog_game, null);
+        builder.setView(viewDang);
+        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+        TextView TV_text = viewDang.findViewById(R.id.dialogGame_TV_text);
+        ImageView IV = viewDang.findViewById(R.id.dialogGame_IV_fon);
+        Button btnStart = viewDang.findViewById(R.id.dialogGame_btn_start);
 
-        json = new JSONObject();
-        try {
-            json.put("nick", MainActivity.nick);
-            json.put("session_id", MainActivity.Session_id);
-            json.put("mode", "offline");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        socket.emit("create_game", json);
-        Log.d("kkk", "Socket_отправка - create_game"+ json.toString());
+        AlertDialog alert = builder.create();
+
+        btnStart.setOnClickListener(view1 -> {
+            json = new JSONObject();
+            try {
+                json.put("nick", MainActivity.nick);
+                json.put("session_id", MainActivity.Session_id);
+                json.put("mode", "offline");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            socket.emit("create_game", json);
+            Log.d("kkk", "Socket_отправка - create_game"+ json.toString());
+            alert.cancel();
+        });
+
+        alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        alert.setCancelable(false);
+        alert.show();
+
+
+
 
         btn_1.setOnClickListener(v -> {
             json = new JSONObject();
@@ -92,6 +112,48 @@ public class GameFragment extends Fragment implements OnBackPressedListener {
                 json.put("session_id", MainActivity.Session_id);
                 json.put("num", num);
                 json.put("choice_index", 0);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            socket.emit("user_choice", json);
+            Log.d("kkk", "Socket_отправка - user_choice"+ json.toString());
+        });
+
+        btn_2.setOnClickListener(v -> {
+            json = new JSONObject();
+            try {
+                json.put("nick", MainActivity.nick);
+                json.put("session_id", MainActivity.Session_id);
+                json.put("num", num);
+                json.put("choice_index", 1);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            socket.emit("user_choice", json);
+            Log.d("kkk", "Socket_отправка - user_choice"+ json.toString());
+        });
+
+        btn_1.setOnClickListener(v -> {
+            json = new JSONObject();
+            try {
+                json.put("nick", MainActivity.nick);
+                json.put("session_id", MainActivity.Session_id);
+                json.put("num", num);
+                json.put("choice_index", 2);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            socket.emit("user_choice", json);
+            Log.d("kkk", "Socket_отправка - user_choice"+ json.toString());
+        });
+
+        btn_1.setOnClickListener(v -> {
+            json = new JSONObject();
+            try {
+                json.put("nick", MainActivity.nick);
+                json.put("session_id", MainActivity.Session_id);
+                json.put("num", num);
+                json.put("choice_index", 3);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -255,6 +317,36 @@ public class GameFragment extends Fragment implements OnBackPressedListener {
 
     @Override
     public void onBackPressed() {
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new StartFragment()).commit();
+        askToLeave();
+    }
+
+    public void askToLeave() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        View viewQuestion = getLayoutInflater().inflate(R.layout.dialog_ok_no, null);
+        builder.setView(viewQuestion);
+        AlertDialog alert = builder.create();
+        TextView TV_text = viewQuestion.findViewById(R.id.dialogOkNo_text);
+        Button btn_yes = viewQuestion.findViewById(R.id.dialogOkNo_btn_yes);
+        Button btn_no = viewQuestion.findViewById(R.id.dialogOkNo_btn_no);
+        TV_text.setText("Вы уверены, что хотите выйти из комнаты?");
+        btn_yes.setOnClickListener(v1 -> {
+            final JSONObject json2 = new JSONObject();
+            try {
+                json2.put("nick", MainActivity.NickName);
+                json2.put("session_id", MainActivity.Session_id);
+                json2.put("room", num);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Log.d("kkk", "Socket_отправка leave_game - " + json2.toString());
+            socket.emit("leave_game", json2);
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new MenuFragment()).commit();
+            alert.cancel();
+        });
+        btn_no.setOnClickListener(v12 -> {
+            alert.cancel();
+        });
+        alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        alert.show();
     }
 }

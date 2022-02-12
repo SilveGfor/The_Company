@@ -18,16 +18,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.thecompany.MainActivity;
 import com.example.thecompany.R;
 import com.example.thecompany.classes.OnBackPressedListener;
-import com.romainpiel.shimmer.Shimmer;
-import com.romainpiel.shimmer.ShimmerTextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,7 +37,6 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import static com.example.thecompany.MainActivity.client;
-import static com.example.thecompany.MainActivity.socket;
 
 public class RegisterFragment extends Fragment implements OnBackPressedListener {
     private static final String url2 = MainActivity.url + "/registration";
@@ -51,15 +45,9 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
 
     Button btnReg;
 
-    RelativeLayout RL_back;
-
-    ShimmerTextView STV_text;
-
     EditText ETnick;
     EditText ETpassword1;
     EditText ETpassword2;
-
-    ProgressBar loading;
 
     public static final String APP_PREFERENCES = "user";
     public static final String APP_PREFERENCES_NICK = "nick";
@@ -78,10 +66,6 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
         ETnick = view.findViewById(R.id.fragmentRegister_ET_nick);
         ETpassword1 = view.findViewById(R.id.fragmentRegister_ET_password1);
         ETpassword2 = view.findViewById(R.id.fragmentRegister_ET_password2);
-        loading = view.findViewById(R.id.fragmentChangePassword_PB);
-        STV_text = view.findViewById(R.id.fragmentRegister_TV_text);
-
-        loading.setVisibility(View.GONE);
 
         mSettings = getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
@@ -96,7 +80,6 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                         ETpassword1.length() >= 7 &&
                         ETpassword1.length() <= 20) {
 
-                    loading.setVisibility(View.VISIBLE);
                     final JSONObject json = new JSONObject();
                     try {
                         json.put("nick", ETnick.getText());
@@ -116,7 +99,6 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                         public void onFailure(Call call, IOException e) {
                             Log.d("kkk", "Всё плохо");
                             ContextCompat.getMainExecutor(getContext()).execute(() -> {
-                                loading.setVisibility(View.GONE);
                             });
                             Log.d("kkk", e.toString());
                         }
@@ -126,7 +108,6 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                             resp = response.body().string().toString();
                             Log.d("kkk", "Принял - " + resp);
                             ContextCompat.getMainExecutor(getContext()).execute(() -> {
-                                loading.setVisibility(View.GONE);
                             });
                             switch (resp) {
                                 case "incorrect_nick":
@@ -134,8 +115,8 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                         View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                                         builder.setView(viewDang);
-                                        TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                                        TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                                        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                                        TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                                         TV_title.setText("Этот ник уже занят!");
                                         TV_error.setText("Придумайте себе другой ник");
                                         AlertDialog alert = builder.create();
@@ -151,8 +132,8 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                                         AlertDialog alert;
                                         alert = builder.create();
 
-                                        TextView TV = viewError.findViewById(R.id.dialogError_TV_errorText);
-                                        TextView TV_title = viewError.findViewById(R.id.dialogError_TV_errorTitle);
+                                        TextView TV = viewError.findViewById(R.id.dialogGame_TV_text);
+                                        TextView TV_title = viewError.findViewById(R.id.dialogGame_TV_title);
 
                                         TV.setText("Регистрация успешна!");
                                         TV_title.setText("Вы успешно зарегистрировались в Mafia Go!");
@@ -170,8 +151,8 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                         View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                                         builder.setView(viewDang);
-                                        TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                                        TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                                        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                                        TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                                         TV_title.setText("Что-то пошло не так!");
                                         TV_error.setText("Напишите разработчику и подробно опишите проблему");
                                         AlertDialog alert = builder.create();
@@ -189,8 +170,8 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                         View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                         builder.setView(viewDang);
-                        TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                        TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                        TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                         TV_title.setText("Ваши пароли не совпадают!");
                         TV_error.setText("Напишите их ещё раз");
                         AlertDialog alert = builder.create();
@@ -200,8 +181,8 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                         View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                         builder.setView(viewDang);
-                        TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                        TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                        TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                         TV_title.setText("Недопустимые символы в нике!");
                         TV_error.setText("В нике нельзя использовать точки и скобки");
                         AlertDialog alert = builder.create();
@@ -211,8 +192,8 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                         View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                         builder.setView(viewDang);
-                        TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                        TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                        TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                         TV_title.setText("Пустой пароль!");
                         TV_error.setText("Ваш пароль не может быть пустым");
                         AlertDialog alert = builder.create();
@@ -222,8 +203,8 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                         View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                         builder.setView(viewDang);
-                        TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                        TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                        TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                         TV_title.setText("Пустой ник!");
                         TV_error.setText("Ваш ник не может быть пустым");
                         AlertDialog alert = builder.create();
@@ -233,8 +214,8 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                         View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                         builder.setView(viewDang);
-                        TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                        TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                        TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                         TV_title.setText("Слишком короткий пароль!");
                         TV_error.setText("Пароль должен быть не менее, чем 7 символов");
                         AlertDialog alert = builder.create();
@@ -244,8 +225,8 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                         View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                         builder.setView(viewDang);
-                        TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                        TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                        TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                         TV_title.setText("Слишком длинный пароль!");
                         TV_error.setText("Ваш пароль должен быть меньше, чем 21 символ");
                         AlertDialog alert = builder.create();
@@ -258,8 +239,8 @@ public class RegisterFragment extends Fragment implements OnBackPressedListener 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                 builder.setView(viewDang);
-                TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                 TV_title.setText("Нет подключения к интернету!");
                 TV_error.setText("Проверьте соединение сети");
                 AlertDialog alert = builder.create();

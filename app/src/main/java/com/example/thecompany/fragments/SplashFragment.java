@@ -18,7 +18,7 @@ import com.example.thecompany.MainActivity;
 import com.example.thecompany.R;
 
 public class SplashFragment extends Fragment {
-    ImageView IV_fon, gif;
+    ImageView IV_fon, gif, gif2;
     TextView TV_name;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,22 +31,24 @@ public class SplashFragment extends Fragment {
         TV_name = view.findViewById(R.id.fragmentSplash_TV_name);
         IV_fon = view.findViewById(R.id.fragmentSplash_IV_fon);
         gif = view.findViewById(R.id.fragmentSplash_IV_gif);
+        gif2 = view.findViewById(R.id.fragmentSplash_IV_gif2);
 
-        TV_name.animate().translationY(-2500).setDuration(1000).setStartDelay(6000);
-        IV_fon.animate().translationY(2000).setDuration(1000).setStartDelay(6000);
-        gif.animate().translationY(1500).setDuration(1000).setStartDelay(6000);
+        TV_name.animate().translationY(-2500).setDuration(1000).setStartDelay(5500);
+        IV_fon.animate().translationY(2000).setDuration(1000).setStartDelay(5500);
+        gif.animate().translationY(-2500).setDuration(1000).setStartDelay(6500);
+        gif2.animate().translationY(2500).setDuration(1000).setStartDelay(6500);
 
-        Glide
-                .with(this)
-                .load(R.drawable.loadingproject1)
+        Glide.with(this)
+                .load(R.drawable.thecompany2)
                 .into(gif);
+        Glide.with(this)
+                .load(R.drawable.loadingproject1)
+                .into(gif2);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new StartFragment()).commit();
-
             }
         },8000);
 

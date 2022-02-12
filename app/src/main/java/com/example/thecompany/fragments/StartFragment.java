@@ -18,19 +18,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.thecompany.MainActivity;
 import com.example.thecompany.R;
-import com.example.thecompany.classes.MovieGifView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -48,10 +44,6 @@ public class StartFragment extends Fragment {
 
     Button btnSignIn;
     Button btnReg;
-
-    ProgressBar PB_loading;
-
-    RelativeLayout RL_back;
 
     EditText ET_nick;
     EditText ET_password;
@@ -82,10 +74,7 @@ public class StartFragment extends Fragment {
         btnReg = view.findViewById(R.id.fragmentStart_btn_register);
         ET_nick = view.findViewById(R.id.fragmentRegister_ET_nick);
         ET_password = view.findViewById(R.id.fragmentStart_ET_password);
-        PB_loading = view.findViewById(R.id.fragmentStart_PB);
-        RL_back = view.findViewById(R.id.fragmentGamesList_RL_back);
 
-        PB_loading.setVisibility(View.INVISIBLE);
         mSettings = getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
         //if (mSettings.contains(APP_PREFERENCES_EMAIL) && mSettings.contains(APP_PREFERENCES_PASSWORD)) {
@@ -109,13 +98,6 @@ public class StartFragment extends Fragment {
             Log.d("kkk", "SharedPref mEmail, mPassword - нет данных");
         }
 
-        RL_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().finishAffinity();
-            }
-        });
-
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,8 +115,8 @@ public class StartFragment extends Fragment {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                         View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                         builder.setView(viewDang);
-                        TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                        TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                        TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                         TV_title.setText("Не все поля заполнены!");
                         TV_error.setText("Вы должны заполнить все поля");
                         AlertDialog alert = builder.create();
@@ -147,8 +129,8 @@ public class StartFragment extends Fragment {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                     builder.setView(viewDang);
-                    TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                    TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                    TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                    TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                     TV_title.setText("Нет подключения к интернету!");
                     TV_error.setText("Проверьте соединение сети");
                     AlertDialog alert = builder.create();
@@ -170,7 +152,6 @@ public class StartFragment extends Fragment {
     public void Login(ViewGroup container) {
         try {
             final JSONObject json = new JSONObject();
-            PB_loading.setVisibility(View.VISIBLE);
             final String[] resp = {""};
             SharedPreferences mSettings;
             mSettings = getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
@@ -204,13 +185,12 @@ public class StartFragment extends Fragment {
                         switch (Answer) {
                             case "incorrect_nick":
                                 ContextCompat.getMainExecutor(getContext()).execute(() -> {
-                                    PB_loading.setVisibility(View.INVISIBLE);
                                     if (!AutoRun) {
                                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                         View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                                         builder.setView(viewDang);
-                                        TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                                        TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                                        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                                        TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                                         TV_title.setText("Такого аккаунта не существует!");
                                         TV_error.setText("Сначала зарегистрируйтесь");
                                         AlertDialog alert = builder.create();
@@ -221,13 +201,12 @@ public class StartFragment extends Fragment {
                                 break;
                             case "incorrect_password":
                                 ContextCompat.getMainExecutor(getContext()).execute(() -> {
-                                    PB_loading.setVisibility(View.INVISIBLE);
                                     if (!AutoRun) {
                                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                         View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                                         builder.setView(viewDang);
-                                        TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                                        TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                                        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                                        TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                                         TV_title.setText("Неправильный пароль!");
                                         TV_error.setText("Если вы забыли пароль, то его всегда можно восстановить по вашей почте");
                                         AlertDialog alert = builder.create();
@@ -263,8 +242,8 @@ public class StartFragment extends Fragment {
                                             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                             View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                                             builder.setView(viewDang);
-                                            TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                                            TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                                            TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                                            TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                                             TV_title.setText("Ух ты!");
                                             TV_error.setText("Вы не поставили аватарку. Её можно установить в настройках");
                                             AlertDialog alert = builder.create();

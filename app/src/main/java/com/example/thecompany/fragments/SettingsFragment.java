@@ -1,6 +1,5 @@
 package com.example.thecompany.fragments;
 
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +9,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -23,7 +21,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.thecompany.MainActivity;
@@ -43,12 +40,9 @@ import static com.example.thecompany.MainActivity.socket;
 
 public class SettingsFragment extends Fragment implements OnBackPressedListener {
 
-    TextView TV_nick;
-    ImageView IV_avatar;
     Button btn_changeNick;
     Button btn_changeAvatar;
     Button btn_changePassword;
-    Button btn_study;
     Button btn_fullscreen;
     Button btn_exit;
 
@@ -67,19 +61,13 @@ public class SettingsFragment extends Fragment implements OnBackPressedListener 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        TV_nick = view.findViewById(R.id.fragmentSettings_TV_nick);
-        IV_avatar = view.findViewById(R.id.fragmentSettings_IV_avatar);
         btn_changeNick = view.findViewById(R.id.fragmentSettings_btn_changeNick);
-        btn_changeAvatar = view.findViewById(R.id.fragmentSettings_btn_changeAvatar);
+        btn_changeAvatar = view.findViewById(R.id.fragmentMenu_btn_game);
         btn_changePassword = view.findViewById(R.id.fragmentSettings_btn_changePassword);
-        btn_study = view.findViewById(R.id.fragmentSettings_btn_study);
         btn_fullscreen = view.findViewById(R.id.fragmentSettings_btn_fullscreen);
         btn_exit = view.findViewById(R.id.fragmentSettings_btn_exit);
 
         mSettings = getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-
-        TV_nick.setText(MainActivity.nick);
-        IV_avatar.setImageBitmap(MainActivity.bitmap_avatar_1);
 
         socket.off("edit_profile");
 
@@ -121,8 +109,8 @@ public class SettingsFragment extends Fragment implements OnBackPressedListener 
                             AlertDialog.Builder builder2 = new AlertDialog.Builder(getActivity());
                             View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                             builder2.setView(viewDang);
-                            TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                            TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                            TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                            TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                             TV_title.setText("Некорректный символ!");
                             TV_error.setText("Нельзя точки и скобки");
                             AlertDialog alert2 = builder2.create();
@@ -135,8 +123,8 @@ public class SettingsFragment extends Fragment implements OnBackPressedListener 
                         AlertDialog.Builder builder2 = new AlertDialog.Builder(getActivity());
                         View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                         builder2.setView(viewDang);
-                        TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                        TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                        TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                         TV_title.setText("Длинный ник!");
                         TV_error.setText("Ваш ник должен быть меньше 16 символов");
                         AlertDialog alert2 = builder2.create();
@@ -149,8 +137,8 @@ public class SettingsFragment extends Fragment implements OnBackPressedListener 
                     AlertDialog.Builder builder2 = new AlertDialog.Builder(getActivity());
                     View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                     builder2.setView(viewDang);
-                    TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                    TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                    TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                    TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                     TV_title.setText("Короткий ник!");
                     TV_error.setText("Ваш ник должен быть больше 2 символов");
                     AlertDialog alert2 = builder2.create();
@@ -196,8 +184,8 @@ public class SettingsFragment extends Fragment implements OnBackPressedListener 
                         AlertDialog.Builder builder2 = new AlertDialog.Builder(getActivity());
                         View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                         builder2.setView(viewDang);
-                        TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                        TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                        TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                         TV_title.setText("Ошибка!");
                         TV_error.setText("Ваши новые пароли не совпадают!");
                         AlertDialog alert2 = builder2.create();
@@ -207,8 +195,8 @@ public class SettingsFragment extends Fragment implements OnBackPressedListener 
                         AlertDialog.Builder builder2 = new AlertDialog.Builder(getActivity());
                         View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                         builder2.setView(viewDang);
-                        TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                        TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                        TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                         TV_title.setText("Ошибка!");
                         TV_error.setText("Ваш пароль не может быть пустым!");
                         AlertDialog alert2 = builder2.create();
@@ -218,8 +206,8 @@ public class SettingsFragment extends Fragment implements OnBackPressedListener 
                         AlertDialog.Builder builder2 = new AlertDialog.Builder(getActivity());
                         View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                         builder2.setView(viewDang);
-                        TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                        TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                        TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                         TV_title.setText("Ошибка!");
                         TV_error.setText("Ваш пароль слишком короткий!");
                         AlertDialog alert2 = builder2.create();
@@ -229,8 +217,8 @@ public class SettingsFragment extends Fragment implements OnBackPressedListener 
                         AlertDialog.Builder builder2 = new AlertDialog.Builder(getActivity());
                         View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                         builder2.setView(viewDang);
-                        TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                        TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                        TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                        TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                         TV_title.setText("Ошибка!");
                         TV_error.setText("Ваш пароль слишком длинный!");
                         AlertDialog alert2 = builder2.create();
@@ -358,7 +346,6 @@ public class SettingsFragment extends Fragment implements OnBackPressedListener 
                         String base64 = Base64.encodeToString(downsizedImageBytes, Base64.DEFAULT);
                         Log.d("kkk", String.valueOf("Длина = " + base64.length()));
                         if (base64.length() <= 524288) {
-                            IV_avatar.setImageBitmap(fromBase64(base64));
                             final JSONObject json2 = new JSONObject();
                             try {
                                 json2.put("nick", MainActivity.NickName);
@@ -373,8 +360,8 @@ public class SettingsFragment extends Fragment implements OnBackPressedListener 
                             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                             View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                             builder.setView(viewDang);
-                            TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                            TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                            TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                            TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                             TV_title.setText("Слишком большое изображение!");
                             TV_error.setText("Выберите изображение поменьше или обрежьте/сожмите свою картинку");
                             AlertDialog alert = builder.create();
@@ -439,80 +426,80 @@ public class SettingsFragment extends Fragment implements OnBackPressedListener 
                 case "incorrect_password":
                     view2 = getLayoutInflater().inflate(R.layout.dialog_error, null);
                     builder2.setView(view2);
-                    TV_title = view2.findViewById(R.id.dialogError_TV_errorTitle);
-                    TV_text = view2.findViewById(R.id.dialogError_TV_errorText);
+                    TV_title = view2.findViewById(R.id.dialogGame_TV_title);
+                    TV_text = view2.findViewById(R.id.dialogGame_TV_text);
                     TV_title.setText("Вы неправильно ввели свой старый пароль!");
                     TV_text.setText("Попробуйте ещё раз");
                     break;
                 case "new_nick_is_the_same_with_old_nick":
                     view2 = getLayoutInflater().inflate(R.layout.dialog_error, null);
                     builder2.setView(view2);
-                    TV_title = view2.findViewById(R.id.dialogError_TV_errorTitle);
-                    TV_text = view2.findViewById(R.id.dialogError_TV_errorText);
+                    TV_title = view2.findViewById(R.id.dialogGame_TV_title);
+                    TV_text = view2.findViewById(R.id.dialogGame_TV_text);
                     TV_title.setText("Ваш новый ник полностью повторяет старый!");
                     TV_text.setText("Придумайте новый ник");
                     break;
                 case "incorrect_new_nick ":
                     view2 = getLayoutInflater().inflate(R.layout.dialog_error, null);
                     builder2.setView(view2);
-                    TV_title = view2.findViewById(R.id.dialogError_TV_errorTitle);
-                    TV_text = view2.findViewById(R.id.dialogError_TV_errorText);
+                    TV_title = view2.findViewById(R.id.dialogGame_TV_title);
+                    TV_text = view2.findViewById(R.id.dialogGame_TV_text);
                     TV_title.setText("Такой ник уже занят!");
                     TV_text.setText("Придумайте другой ник");
                     break;
                 case "last_nick_update_was_less_than_a_month_ago":
                     view2 = getLayoutInflater().inflate(R.layout.dialog_error, null);
                     builder2.setView(view2);
-                    TV_title = view2.findViewById(R.id.dialogError_TV_errorTitle);
-                    TV_text = view2.findViewById(R.id.dialogError_TV_errorText);
+                    TV_title = view2.findViewById(R.id.dialogGame_TV_title);
+                    TV_text = view2.findViewById(R.id.dialogGame_TV_text);
                     TV_title.setText("Вы уже меняли ник в этом месяце!");
                     TV_text.setText("Не надо так часто менять ники");
                     break;
                 case "mat_in_new_nick":
                     view2 = getLayoutInflater().inflate(R.layout.dialog_error, null);
                     builder2.setView(view2);
-                    TV_title = view2.findViewById(R.id.dialogError_TV_errorTitle);
-                    TV_text = view2.findViewById(R.id.dialogError_TV_errorText);
+                    TV_title = view2.findViewById(R.id.dialogGame_TV_title);
+                    TV_text = view2.findViewById(R.id.dialogGame_TV_text);
                     TV_title.setText("Ваш ник не проходит цензуру!");
                     TV_text.setText("Придумайте более приличный ник");
                     break;
                 case "cant_change_nick_because_you_are_playing_in_room":
                     view2 = getLayoutInflater().inflate(R.layout.dialog_error, null);
                     builder2.setView(view2);
-                    TV_title = view2.findViewById(R.id.dialogError_TV_errorTitle);
-                    TV_text = view2.findViewById(R.id.dialogError_TV_errorText);
+                    TV_title = view2.findViewById(R.id.dialogGame_TV_title);
+                    TV_text = view2.findViewById(R.id.dialogGame_TV_text);
                     TV_title.setText("Нельзя изменить ник сейчас!");
                     TV_text.setText("В Mafia Go нельзя менять ник во время игры в комнате");
                     break;
                 case "cant_change_nick_because_you_are_observer":
                     view2 = getLayoutInflater().inflate(R.layout.dialog_error, null);
                     builder2.setView(view2);
-                    TV_title = view2.findViewById(R.id.dialogError_TV_errorTitle);
-                    TV_text = view2.findViewById(R.id.dialogError_TV_errorText);
+                    TV_title = view2.findViewById(R.id.dialogGame_TV_title);
+                    TV_text = view2.findViewById(R.id.dialogGame_TV_text);
                     TV_title.setText("Нельзя изменить ник сейчас!");
                     TV_text.setText("В Mafia Go нельзя менять ник во время наблюдения за игрой");
                     break;
                 case "invalid_personal_color":
                     view2 = getLayoutInflater().inflate(R.layout.dialog_error, null);
                     builder2.setView(view2);
-                    TV_title = view2.findViewById(R.id.dialogError_TV_errorTitle);
-                    TV_text = view2.findViewById(R.id.dialogError_TV_errorText);
+                    TV_title = view2.findViewById(R.id.dialogGame_TV_title);
+                    TV_text = view2.findViewById(R.id.dialogGame_TV_text);
                     TV_title.setText("Время действия этого цвета истекло!");
                     TV_text.setText("Вы можете купить его в магазине");
                     break;
                 case "invalid_status":
                     view2 = getLayoutInflater().inflate(R.layout.dialog_error, null);
                     builder2.setView(view2);
-                    TV_title = view2.findViewById(R.id.dialogError_TV_errorTitle);
-                    TV_text = view2.findViewById(R.id.dialogError_TV_errorText);
+                    TV_title = view2.findViewById(R.id.dialogGame_TV_title);
+                    TV_text = view2.findViewById(R.id.dialogGame_TV_text);
                     TV_title.setText("Время действия этого статуса истекло!");
                     TV_text.setText("Вы можете купить его в магазине");
                     break;
                 default:
                     view2 = getLayoutInflater().inflate(R.layout.dialog_error, null);
                     builder2.setView(view2);
-                    TV_title = view2.findViewById(R.id.dialogError_TV_errorTitle);
-                    TV_text = view2.findViewById(R.id.dialogError_TV_errorText);
+                    TV_title = view2.findViewById(R.id.dialogGame_TV_title);
+                    TV_text = view2.findViewById(R.id.dialogGame_TV_text);
                     TV_title.setText("Что-то пошло не так!");
                     TV_text.setText("Напишите разработчику и подробно опишите проблему");
                     break;
@@ -525,6 +512,6 @@ public class SettingsFragment extends Fragment implements OnBackPressedListener 
 
     @Override
     public void onBackPressed() {
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new StartFragment()).commit();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new MenuFragment()).commit();
     }
 }

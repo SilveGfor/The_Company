@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.example.thecompany.R;
 import com.example.thecompany.adapters.RatingsPagerAdapter;
 import com.example.thecompany.classes.MovieGifView;
+import com.example.thecompany.classes.OnBackPressedListener;
 import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONObject;
@@ -24,7 +25,7 @@ import org.json.JSONObject;
 import static com.example.thecompany.MainActivity.socket;
 
 
-public class RatingsFragment extends Fragment {
+public class RatingsFragment extends Fragment implements OnBackPressedListener {
 
     public TabLayout tabLayout;
 
@@ -49,5 +50,10 @@ public class RatingsFragment extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
 
         return view;
+    }
+
+    @Override
+    public void onBackPressed() {
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new MenuFragment()).commit();
     }
 }

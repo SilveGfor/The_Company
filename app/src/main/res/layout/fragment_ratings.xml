@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/cardview_dark_background">
+    android:background="@color/black">
 
     <TextView
         android:id="@+id/fragmentGame_TV_roomName"
@@ -33,12 +33,12 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Победы" />
+            android:text="быстрые победы" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Поражения" />
+            android:text="Медленные победы" />
 
     </com.google.android.material.tabs.TabLayout>
 

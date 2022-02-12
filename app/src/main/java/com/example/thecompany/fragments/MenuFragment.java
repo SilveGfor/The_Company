@@ -12,7 +12,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.util.Base64;
@@ -21,9 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.thecompany.MainActivity;
@@ -33,7 +30,6 @@ import com.example.thecompany.classes.OnBackPressedListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import io.socket.emitter.Emitter;
 
 import static com.example.thecompany.MainActivity.socket;
@@ -41,40 +37,9 @@ import static com.example.thecompany.MainActivity.socket;
 public class MenuFragment extends Fragment implements OnBackPressedListener {
     Button btnRating;
     Button btnGame;
-    Button btnSettings;
-    Button btnOnlineGame;
-    RelativeLayout btn_back;
-    RelativeLayout RL_boosters;
+    ImageButton btnSettings;
 
-    TextView TV_money;
-    TextView TV_exp;
-    TextView TV_rang;
-    TextView TV_gold;
     TextView TV_nick;
-    TextView TV_status;
-
-    CardView CV_info;
-
-    static final int GALLERY_REQUEST = 1;
-
-    CircleImageView IV_avatar;
-
-    ImageView Chats;
-    ImageView Friends;
-    ImageView Shop;
-    ImageView Competitions;
-    ImageView VK;
-    ImageView Telegram;
-    ImageView Menu;
-    ImageView IV_mafiaGo;
-
-    ProgressBar PB_loading;
-
-    Boolean was_study;
-    String study_type = "";
-
-    String base64_screenshot = "", report_nick = "", report_id = "";
-
 
     public static final String APP_PREFERENCES = "user";
     public static final String APP_PREFERENCES_NICK = "nick";
@@ -90,20 +55,11 @@ public class MenuFragment extends Fragment implements OnBackPressedListener {
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
         btnRating = view.findViewById(R.id.fragmentMenu_btn_rating);
-        btnGame = view.findViewById(R.id.fragmentSettings_btn_changeAvatar);
-        btnSettings = view.findViewById(R.id.fragmentSettingsProfile_btn_changePassword);
-        TV_money = view.findViewById(R.id.fragmentSettingsProfile_TV_money);
-        TV_exp = view.findViewById(R.id.dialogYouHaveBeenBanned_TV_exp);
-        TV_gold = view.findViewById(R.id.fragmentMenu_TV_gold);
-        TV_rang = view.findViewById(R.id.fragmentSettingsProfile_TV_rang);
+        btnGame = view.findViewById(R.id.fragmentMenu_btn_game);
+        btnSettings = view.findViewById(R.id.fragmentMenu_btn_settings);
         TV_nick = view.findViewById(R.id.fragmentMenu_TV_nick);
-        TV_status = view.findViewById(R.id.fragmentMenu_TV_status);
-        PB_loading = view.findViewById(R.id.fragmentMenu_PB);
-        btnOnlineGame = view.findViewById(R.id.fragmentMenu_btn_dailyTasks);
-        btn_back = view.findViewById(R.id.fragmentGamesList_RL_back);
-        IV_mafiaGo = view.findViewById(R.id.fragmentMenu_IV_mafiaGo);
 
-        IV_avatar = view.findViewById(R.id.fragmentMenu_IV_avatar);
+        //IV_avatar = view.findViewById(R.id.fragmentMenu_IV_avatar);
 
         mSettings = getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
@@ -113,8 +69,6 @@ public class MenuFragment extends Fragment implements OnBackPressedListener {
         socket.off("get_profile");
 
         socket.on("get_profile", OnGetProfile);
-
-        CV_info = view.findViewById(R.id.fragmentMenu_CV);
 
         //настройки от Шлыкова
         //Nastroiki nastroiki = new Nastroiki();
@@ -136,10 +90,6 @@ public class MenuFragment extends Fragment implements OnBackPressedListener {
         //BounceInterpolator interpolator = new BounceInterpolator();
         //animation.setInterpolator(interpolator);
         //CV_info.startAnimation(animation);
-
-        btnOnlineGame.setOnClickListener(v -> {
-            //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new DailyTasksFragment()).commit();
-        });
 
         btnSettings.setOnClickListener(v -> {
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity, new SettingsFragment()).commit();
@@ -164,21 +114,14 @@ public class MenuFragment extends Fragment implements OnBackPressedListener {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     View viewDang = getLayoutInflater().inflate(R.layout.dialog_error, null);
                     builder.setView(viewDang);
-                    TextView TV_title = viewDang.findViewById(R.id.dialogError_TV_errorTitle);
-                    TextView TV_error = viewDang.findViewById(R.id.dialogError_TV_errorText);
+                    TextView TV_title = viewDang.findViewById(R.id.dialogGame_TV_title);
+                    TextView TV_error = viewDang.findViewById(R.id.dialogGame_TV_text);
                     TV_title.setText("Нет подключения к интернету!");
                     TV_error.setText("Проверьте соединение сети");
                     AlertDialog alert = builder.create();
                     alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     alert.show();
                 }
-            }
-        });
-
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().finishAffinity();
             }
         });
 
@@ -232,7 +175,7 @@ public class MenuFragment extends Fragment implements OnBackPressedListener {
 
                 if (avatar != null && !avatar.equals("") && !avatar.equals("null")) {
                     MainActivity.bitmap_avatar_1 = fromBase64(avatar);
-                    IV_avatar.setImageBitmap(MainActivity.bitmap_avatar_1);
+                    //IV_avatar.setImageBitmap(MainActivity.bitmap_avatar_1);
                 }
 
                 TV_nick.setText(nick);

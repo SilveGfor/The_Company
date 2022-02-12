@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/d_shape">
+
+    <Button
+        android:id="@+id/dialogGame_btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="Начать"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialogGame_TV_text" />
+
+    <ImageView
+        android:id="@+id/dialogGame_IV_fon"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/casino_machine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dialogGame_TV_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Ты уже победитель!"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialogGame_IV_fon" />
+
+    <TextView
+        android:id="@+id/dialogGame_TV_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="Поздравляю, друг мой, сегодня определенно ваш день! Далеко не каждому дано сорвать джекпот в одном из крупнейших казино. Вероятно, вы думаете, как бы потратить деньги. Яхта? Остров? Под подушку? А, угадал? Бросьте, любезный, у меня есть вариант получше: как насчет своей инвестиционной компании? Слишком сложно? Не переживайте, у меня уже все схвачено, вам только необходимо рассматривать мои предложения, и все! Проще некуда! Что? Вы неделю подумаете? Друг, инвестиции неделю не ждут, сейчас или никогда! Что жена говорит? Место под подушкой уже занято? Ну так давайте за дело, вам нечего переживать, ведь вы уже победитель!"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialogGame_TV_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

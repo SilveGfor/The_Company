@@ -5,71 +5,113 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/cardview_dark_background">
+    android:background="@color/black">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="250dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/d_shape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Настройки"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/fragmentSettings_btn_changeAvatar"
+        android:id="@+id/fragmentMenu_btn_game"
         android:layout_width="268dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/button"
         android:gravity="center"
         android:text="сменить аватар"
         android:textColor="@color/white"
-        android:textSize="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
 
     <Button
         android:id="@+id/fragmentSettings_btn_changeNick"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button"
         android:gravity="center"
         android:text="сменить ник"
         android:textColor="@color/white"
-        android:textSize="28dp"
-        app:layout_constraintEnd_toEndOf="@+id/fragmentSettings_btn_changeAvatar"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentMenu_btn_game"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/fragmentSettings_btn_changeAvatar"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_changeAvatar" />
+        app:layout_constraintStart_toStartOf="@+id/fragmentMenu_btn_game"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentMenu_btn_game" />
 
     <Button
         android:id="@+id/fragmentSettings_btn_changePassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button"
         android:gravity="center"
         android:text="сменить пароль"
         android:textColor="@color/white"
-        android:textSize="28dp"
-        app:layout_constraintEnd_toEndOf="@+id/fragmentSettings_btn_changeAvatar"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentMenu_btn_game"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/fragmentSettings_btn_changeAvatar"
+        app:layout_constraintStart_toStartOf="@+id/fragmentMenu_btn_game"
         app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_changeNick" />
 
     <Button
-        android:id="@+id/fragmentSettings_btn_close"
+        android:id="@+id/fragmentSettings_btn_fullscreen"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="Полный экран"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentMenu_btn_game"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fragmentMenu_btn_game"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_changePassword" />
+
+    <Button
+        android:id="@+id/fragmentSettings_btn_exit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button"
         android:gravity="center"
         android:text="выйти из аккаунта"
         android:textColor="@color/white"
-        android:textSize="28dp"
-        app:layout_constraintEnd_toEndOf="@+id/fragmentSettings_btn_changeAvatar"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentMenu_btn_game"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/fragmentSettings_btn_changeAvatar"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_changeNick" />
+        app:layout_constraintStart_toStartOf="@+id/fragmentMenu_btn_game"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_fullscreen" />
 
     <ImageButton
-        android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:src="@drawable/back"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="30dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

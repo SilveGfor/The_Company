@@ -5,80 +5,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_dark_background">
+    android:background="@color/black">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="158dp"
+        android:layout_height="232dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentMenu_btn_settings"
+        app:srcCompat="@drawable/right_1" />
 
     <Button
-        android:id="@+id/fragmentSettings_btn_changeAvatar"
+        android:id="@+id/fragmentMenu_btn_game"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="-30dp"
+        android:layout_marginEnd="60dp"
         android:background="@drawable/button"
         android:gravity="center"
         android:text="Играть"
         android:textColor="@color/white"
         android:textSize="28dp"
-        app:layout_constraintEnd_toEndOf="@+id/fragmentMenu_btn_dailyTasks"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/fragmentMenu_btn_dailyTasks"
-        tools:layout_editor_absoluteY="176dp" />
-
-    <Button
-        android:id="@+id/fragmentSettingsProfile_btn_changePassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Рейтинг"
-        android:background="@drawable/button"
-        android:textSize="28dp"
-        android:textColor="@color/white"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="@+id/fragmentMenu_btn_dailyTasks"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/fragmentMenu_btn_dailyTasks"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentMenu_btn_dailyTasks" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/fragmentMenu_btn_rating"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Правила"
         android:background="@drawable/button"
-        android:textSize="28dp"
-        android:textColor="@color/white"
         android:gravity="center"
-        app:layout_constraintEnd_toEndOf="@+id/fragmentMenu_btn_dailyTasks"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/fragmentMenu_btn_dailyTasks"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentSettingsProfile_btn_changePassword" />
+        android:text="Рейтинг"
+        android:textColor="@color/white"
+        android:textSize="28dp"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentMenu_btn_game"
+        app:layout_constraintStart_toStartOf="@+id/fragmentMenu_btn_game"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentMenu_btn_game" />
 
     <Button
-        android:id="@+id/fragmentMenu_btn_dailyTasks"
+        android:id="@+id/fragmentMenu_btn_rules"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/button"
-        android:text="Играть онлайн"
-        android:textSize="28dp"
-        android:textColor="@color/white"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentSettings_btn_changeAvatar" />
+        android:text="Правила"
+        android:textColor="@color/white"
+        android:textSize="28dp"
+        app:layout_constraintEnd_toEndOf="@+id/fragmentMenu_btn_game"
+        app:layout_constraintStart_toStartOf="@+id/fragmentMenu_btn_game"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentMenu_btn_rating" />
 
     <ImageButton
+        android:id="@+id/fragmentMenu_btn_settings"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:src="@drawable/settings"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="41dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/fragmentMenu_TV_nick"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
         android:text="Римский гусь"
         android:textColor="@color/white"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="260dp"
-        tools:layout_editor_absoluteY="17dp" />
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
